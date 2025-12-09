@@ -1,5 +1,5 @@
 // ====== WebSocket ======
-const socket = new WebSocket("wss://esp32-dashboard-1.onrender.com");
+const socket = new WebSocket("wss://your.onrender.com");
 
 // ====== Leaflet Map Setup ======
 let map, marker;
