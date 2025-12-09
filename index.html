@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Ambulance - Doctor Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+<body>
+  <nav>
+    <div class="logo">🩺 Smart Ambulance - Doctor Dashboard</div>
+    <div class="top-buttons">
+      <button onclick="showPanel('health')">Health</button>
+      <button onclick="showPanel('location')">Location</button>
+      <button onclick="showPanel('hospitals')">Hospitals</button>
+      <button onclick="showPanel('all')">All</button>
+    </div>
+  </nav>
+
+  <!-- Emergency Banner -->
+  <div id="emergencyBanner" class="emergency-banner" style="display: none;">
+    🚨 Emergency Alert: Patient critical! Check immediately!
+  </div>
+
+  <div id="panelContainer">
+    <!-- HEALTH PANEL -->
+    <div id="health" class="panel active">
+      <h2>Patient Health Status</h2>
+      <p>Heart Rate: <span id="heartRate">--</span> bpm</p>
+      <p>SpO₂: <span id="spo2">--</span>%</p>
+      <p>Temperature: <span id="temperature">--</span>°C</p>
+    </div>
+
+    <!-- LOCATION PANEL -->
+    <div id="location" class="panel">
+      <div class="map-header">
+        <h2>Ambulance Location</h2>
+        <div class="map-mode-buttons">
+          <button onclick="setMapType('osm')">🗺 Roadmap</button>
+          <button onclick="setMapType('satellite')">🛰 Satellite</button>
+          <button onclick="setMapType('hybrid')">🌍 Hybrid</button>
+        </div>
+      </div>
+      <div id="mapContainer">
+        <div id="leafletMap" style="height:340px;"></div>
+        <div id="gpsStatus">🛰 Waiting for GPS data...</div>
+      </div>
+    </div>
+
+    <!-- HOSPITAL PANEL -->
+    <div id="hospitals" class="panel">
+      <h2>Nearby Hospitals</h2>
+      <button id="searchHospitals">🔍 Search Nearest Hospitals</button>
+      <ul id="hospitalList"></ul>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
